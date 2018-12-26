@@ -3,6 +3,8 @@ package org.lms.material.app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.*;
@@ -10,6 +12,34 @@ import android.webkit.*;
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int action = event.getAction();
+        int keyCode = event.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                if (action == KeyEvent.ACTION_UP) {
+                    if (event.getEventTime() - event.getDownTime() > ViewConfiguration.getLongPressTimeout()) {
+                        //TODO long click action
+                    } else {
+                        //TODO click action
+                    }
+                }
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (action == KeyEvent.ACTION_UP) {
+                    if (event.getEventTime() - event.getDownTime() > ViewConfiguration.getLongPressTimeout()) {
+                        //TODO long click action
+                    } else {
+                        //TODO click action
+                    }
+                }
+                return true;
+            default:
+                return super.dispatchKeyEvent(event);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
