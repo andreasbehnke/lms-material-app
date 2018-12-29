@@ -49,9 +49,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 return true;
-            default:
-                return super.dispatchKeyEvent(event);
+            case KeyEvent.KEYCODE_BACK:
+                if (action == KeyEvent.ACTION_DOWN && webView != null && webView.canGoBack()) {
+                    webView.goBack();
+                    return true;
+                }
         }
+        return super.dispatchKeyEvent(event);
     }
 
     @Override
