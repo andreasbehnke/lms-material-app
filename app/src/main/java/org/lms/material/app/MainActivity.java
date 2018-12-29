@@ -1,7 +1,10 @@
 package org.lms.material.app;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.ViewConfiguration;
@@ -12,6 +15,16 @@ import android.webkit.*;
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
+
+    private void navigateToSettingsActivity() {
+        startActivity(new Intent(this, SettingsActivity.class));
+    }
+
+    private String getUrl() {
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        return sharedPreferences.getString("lms_server_url",null);
+    }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
@@ -49,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide(); // hide the title bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
-
         setContentView(R.layout.activity_main);
+
 
         webView = findViewById(R.id.activity_main_webview);
 
@@ -60,17 +73,19 @@ public class MainActivity extends AppCompatActivity {
         // https://stackoverflow.com/questions/33079762/android-webview-uncaught-typeerror-cannot-read-property-getitem-of-null
         webSettings.setDomStorageEnabled(true);
 
-        final WebViewClient client = new WebViewClient() {
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                // TODO: open configuration activity on network error
-                super.onReceivedError(view, request, error);
-
+                // if there is any error opening the web page, navigate to settings
+                // screen because site could not be loaded
+                navigateToSettingsActivity();
             }
-        };
+        });
 
-        webView.setWebViewClient(client);
-
-        webView.loadUrl("http://your.url.to.lms.server");
+        String url = getUrl();
+        if (url == null || ! URLUtil.isValidUrl(url)) {
+            navigateToSettingsActivity();
+        }
+        webView.loadUrl(url);
     }
 }

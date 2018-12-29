@@ -6,10 +6,10 @@
             android:title="Server Configuration">
 
         <EditTextPreference
-                android:defaultValue="http://path-to-LMS-server:9000"
+                android:defaultValue="http://???:9000"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:title="Logitech Media Server URL"
+                android:title="Logitech Music Server URL"
                 android:key="lms_server_url"/>
     </PreferenceCategory>
 </PreferenceScreen>

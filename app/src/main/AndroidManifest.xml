@@ -24,6 +24,8 @@
                 android:name="org.apache.http.legacy"
                 android:required="false"/>
 
+        <activity android:name=".SettingsActivity">
+        </activity>
     </application>
 
 </manifest>
