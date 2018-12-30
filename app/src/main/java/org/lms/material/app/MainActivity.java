@@ -2,12 +2,10 @@ package org.lms.material.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.*;
@@ -31,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         int action = event.getAction();
         int keyCode = event.getKeyCode();
         switch (keyCode) {
+            /*
+
+            TODO: find a way to change volume in javascript app
+
             case KeyEvent.KEYCODE_VOLUME_UP:
                 if (action == KeyEvent.ACTION_UP) {
                     if (event.getEventTime() - event.getDownTime() > ViewConfiguration.getLongPressTimeout()) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 return true;
+                */
             case KeyEvent.KEYCODE_BACK:
                 if (action == KeyEvent.ACTION_DOWN && webView != null && webView.canGoBack()) {
                     webView.goBack();
