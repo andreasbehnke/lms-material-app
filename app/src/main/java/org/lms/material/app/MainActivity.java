@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         String url = getUrl();
-        if (url == null || ! URLUtil.isValidUrl(url)) {
+        if (url == null || !Patterns.WEB_URL.matcher(url).matches()) {
             navigateToSettingsActivity();
         }
         webView.loadUrl(url);
