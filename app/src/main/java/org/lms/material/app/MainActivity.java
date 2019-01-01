@@ -91,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
         if (url == null || !Patterns.WEB_URL.matcher(url).matches()) {
             navigateToSettingsActivity();
         }
+
+
+        // always clear cache to get newest application version
+        webView.clearCache(true);
+
         webView.loadUrl(url);
     }
 }
