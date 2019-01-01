@@ -30,36 +30,25 @@ public class MainActivity extends AppCompatActivity {
         int action = event.getAction();
         int keyCode = event.getKeyCode();
         switch (keyCode) {
-            /*
-
-            TODO: find a way to change volume in javascript app
-
             case KeyEvent.KEYCODE_VOLUME_UP:
                 if (action == KeyEvent.ACTION_UP) {
-                    if (event.getEventTime() - event.getDownTime() > ViewConfiguration.getLongPressTimeout()) {
-                        //TODO long click action
-                    } else {
-                        //TODO click action
-                    }
+                    webView.evaluateJavascript("incrementVolume()", null);
                 }
-                return true;
+                break;
             case KeyEvent.KEYCODE_VOLUME_DOWN:
                 if (action == KeyEvent.ACTION_UP) {
-                    if (event.getEventTime() - event.getDownTime() > ViewConfiguration.getLongPressTimeout()) {
-                        //TODO long click action
-                    } else {
-                        //TODO click action
-                    }
+                    webView.evaluateJavascript("decrementVolume()", null);
                 }
-                return true;
-                */
+                break;
             case KeyEvent.KEYCODE_BACK:
                 if (action == KeyEvent.ACTION_DOWN && webView != null && webView.canGoBack()) {
                     webView.goBack();
-                    return true;
                 }
+                break;
+            default:
+                return super.dispatchKeyEvent(event);
         }
-        return super.dispatchKeyEvent(event);
+        return true;
     }
 
     @Override
@@ -89,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
                 navigateToSettingsActivity();
             }
         });
+
+        //webView.setWebChromeClient(new WebChromeClient() {
+        //    @Override
+        //    public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+        //        android.util.Log.d("************ WebView", consoleMessage.message());
+        //        return true;
+        //    }
+        //});
 
         String url = getUrl();
         if (url == null || !Patterns.WEB_URL.matcher(url).matches()) {
