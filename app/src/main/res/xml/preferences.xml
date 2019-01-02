@@ -6,10 +6,20 @@
             android:title="Server Configuration">
 
         <EditTextPreference
-                android:defaultValue="http://???:9000"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:title="Logitech Music Server URL"
-                android:key="lms_server_url"/>
+            android:defaultValue="http://???:9000"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Logitech Music Server URL"
+            android:key="lms_server_url"/>
+
+        <Preference
+            android:title="Reconnect">
+            <intent
+                    android:action="android.intent.action.VIEW"
+                    android:targetPackage="org.lms.material.app"
+                    android:targetClass="org.lms.material.app.MainActivity"
+            />
+        </Preference>
+
     </PreferenceCategory>
 </PreferenceScreen>
