@@ -98,4 +98,25 @@ public class MainActivity extends AppCompatActivity {
 
         webView.loadUrl(url);
     }
+
+    @Override
+    protected void onPause() {
+        webView.onPause();
+        webView.pauseTimers();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        webView.onResume();
+        webView.resumeTimers();
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        webView.destroy();
+        webView = null;
+        super.onDestroy();
+    }
 }
