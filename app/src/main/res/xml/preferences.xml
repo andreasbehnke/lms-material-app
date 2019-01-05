@@ -3,22 +3,21 @@
 
     <PreferenceCategory
             android:key="server_settings"
-            android:title="Server Configuration">
+            android:title="@string/preference_category">
 
         <EditTextPreference
-            android:defaultValue="http://???:9000"
+            android:defaultValue="@string/default_url"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Logitech Music Server URL"
+            android:title="@string/default_url_title"
             android:key="lms_server_url"/>
 
         <Preference
-            android:title="Reconnect">
+            android:title="@string/reconnect_button_title">
             <intent
                     android:action="android.intent.action.VIEW"
                     android:targetPackage="org.lms.material.app"
-                    android:targetClass="org.lms.material.app.MainActivity"
-            />
+                    android:targetClass="org.lms.material.app.MainActivity" />
         </Preference>
 
     </PreferenceCategory>

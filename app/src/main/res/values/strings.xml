@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Home Music Controller</string>
+    <string name="preference_category">Server Configuration</string>
+    <string name="default_url">http://???:9000</string>
+    <string name="default_url_title">Logitech Music Server URL</string>
+    <string name="reconnect_button_title">Reconnect</string>
+
 </resources>
