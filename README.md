@@ -11,11 +11,11 @@ This app will provide these additional features in comparison to running in a br
 
 At least android 5 is required for running this app. The app has been tested for android 9 and android 7.
 
-## release download
+## Release Download
 
 https://github.com/andreasbehnke/lms-material-app/releases
 
-## building and signing the app
+## Building and Signing the App
 
 You can build the app using your own signing key. Only signed apk files can be installed by downloading, so the signing 
 process is required. 
@@ -23,32 +23,25 @@ process is required.
 Read this documentation for details: https://developer.android.com/studio/publish/app-signing
 
 * create a jsk keystore and a key for signing app:
-
 ```
 keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias
 ```
-
 * create file keystore.properties:
-
 ```
 storePassword=myStorePassword
 keyPassword=mykeyPassword
 keyAlias=my-alias
 storeFile=my-release-key.jks
 ```
-
 * secure this file:
-
 ```
 chmod 600 keystore.properties
 ```
-
 * build release apk:
-
 ```
 ./gradlew assembleRelease
 ```
-
 * move release artifact to your phone: 
-
+```
 /lms-material-app/app/build/outputs/apk/release/app-release.apk 
+```
