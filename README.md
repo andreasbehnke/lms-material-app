@@ -1,3 +1,7 @@
+# THIS APP IS OBSOLETE!
+Don't use this app because the lms-material plugin provides the possibility to add
+the webapp to your android start screen and integrates with taskbar.
+
 # lms-material-app
 Simple Web View app for LMS material plugin https://github.com/CDrummond/lms-material
 
